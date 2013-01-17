@@ -20,34 +20,41 @@ public class MySingleton {
 
 
     @PostConstruct
-    public void onCreate() {
+    public void onCreate() throws Exception {
 
-        LOGGER.info("TX Status:" + transaction.getTransactionStatus());
+       /* LOGGER.info("TX Status:" + transaction.getTransactionStatus());
         LOGGER.info("TX Status:" + transaction.getTransactionKey());
         try {
             throw new MyException("xxx--" + "MyException with xml" + "--xxx");
         } catch (Exception e) {
             LOGGER.info("Transaction status: " + transaction.getTransactionStatus());
-        }
+            throw e;
+        }*/
 
-       /* LOGGER.info("TX Status:" + transaction.getTransactionStatus());
+       LOGGER.info("TX Status:" + transaction.getTransactionStatus());
         LOGGER.info("TX Status:" + transaction.getTransactionKey());
         try {
             throw new MyException2("xxx--" + "MyException2 with out xml" + "--xxx");
         } catch (Exception e) {
             LOGGER.info("Transaction status: " + transaction.getTransactionStatus());
+            throw e;
         }
-
+ /*
+        LOGGER.info("TX Status:" + transaction.getTransactionStatus());
+        LOGGER.info("TX Status:" + transaction.getTransactionKey());
         try {
             throw new FileNotFoundException("xxx--" + "MyException3 (file not found exception)" + "--xxx");
         } catch (Exception e) {
-            e.printStackTrace();
-        }
-
+            LOGGER.info("Transaction status: " + transaction.getTransactionStatus());
+            throw e;
+        }*/
+        /*LOGGER.info("TX Status:" + transaction.getTransactionStatus());
+        LOGGER.info("TX Status:" + transaction.getTransactionKey());
         try {
             throw new IllegalAccessException("xxx--" + "MyException4 (illegal access exception)" + "--xxx");
         } catch (Exception e) {
-            e.printStackTrace();
+            LOGGER.info("Transaction status: " + transaction.getTransactionStatus());
+            throw e;
         }*/
     }
 }

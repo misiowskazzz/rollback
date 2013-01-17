@@ -5,7 +5,7 @@ import javax.ejb.ApplicationException;
 import javax.transaction.TransactionSynchronizationRegistry;
 import java.util.logging.Logger;
 
-@ApplicationException(rollback = true)
+@ApplicationException(rollback = false)
 public class MyException2 extends Exception {
 
     private static final Logger LOGGER = Logger.getLogger(MyException.class.getCanonicalName());
