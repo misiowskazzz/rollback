@@ -1,6 +1,5 @@
 package pl.itcrowd.rollback;
 
-
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.ejb.EJB;
@@ -19,11 +18,6 @@ public class MySingleton {
     @Resource
     private TransactionSynchronizationRegistry transaction;
 
-    @EJB
-    private MyException myException;
-
-    @EJB
-    private MyException2 myException2;
 
     @PostConstruct
     public void onCreate() {
@@ -31,30 +25,29 @@ public class MySingleton {
         LOGGER.info("TX Status:" + transaction.getTransactionStatus());
         LOGGER.info("TX Status:" + transaction.getTransactionKey());
         try {
-            throw new MyException("xxx--" + "MyException" + "--xxx");
+            throw new MyException("xxx--" + "MyException with xml" + "--xxx");
         } catch (Exception e) {
             LOGGER.info("Transaction status: " + transaction.getTransactionStatus());
         }
 
-        LOGGER.info("TX Status:" + transaction.getTransactionStatus());
+       /* LOGGER.info("TX Status:" + transaction.getTransactionStatus());
         LOGGER.info("TX Status:" + transaction.getTransactionKey());
         try {
-            throw new MyException2("xxx--" + "MyException2" + "--xxx");
+            throw new MyException2("xxx--" + "MyException2 with out xml" + "--xxx");
         } catch (Exception e) {
             LOGGER.info("Transaction status: " + transaction.getTransactionStatus());
         }
 
         try {
-            throw new FileNotFoundException("xxx--" + "MyException2" + "--xxx");
+            throw new FileNotFoundException("xxx--" + "MyException3 (file not found exception)" + "--xxx");
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         try {
-            throw new IllegalAccessException("xxx--" + "MyException2" + "--xxx");
+            throw new IllegalAccessException("xxx--" + "MyException4 (illegal access exception)" + "--xxx");
         } catch (Exception e) {
             e.printStackTrace();
-        }
-
+        }*/
     }
 }
